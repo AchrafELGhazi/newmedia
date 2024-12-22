@@ -6,9 +6,11 @@ import TeamSection from './components/TeamSection';
 import InspirationSection from './components/InspirationSection';
 import ShowcaseSection from './components/ShowcaseSection';
 import AnimationSection from './components/AnimationSection'; // Import the new section
+import EditSection from './components/EditSection'; // Import the new section
 import './App.css';
 import { motion } from 'framer-motion';
 import { FaGlobe } from 'react-icons/fa';
+import DrawingSection from './components/DrawingSection';
 
 function App() {
   return (
@@ -49,15 +51,12 @@ function App() {
                     <BibliographySection />
                     <InspirationSection />
                     <ShowcaseSection />
-                    
                   </>
                 }
               />
-              <Route
-                path='/AnimationSection'
-                element={<AnimationSection />}
-              />{' '}
-              {/* Define the route for AnimationSection */}
+              <Route path='/AnimationSection' element={<AnimationSection />} />{' '}
+              <Route path='/DrawingSection' element={<DrawingSection />} />
+              <Route path='/EditSection' element={<EditSection />} />
             </Routes>
           </main>
 
