@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
@@ -54,7 +53,7 @@ function ShowcaseSection() {
     },
   };
 
-  const handleNavigation = link => {
+  const handleNavigation = (link:any) => {
     navigate(link);
   };
 

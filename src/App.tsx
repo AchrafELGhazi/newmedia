@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import AnimationSection from './components/AnimationSection';
 import HeroSection from './components/HeroSection';
 import ProjectSection from './components/ProjectSection';
 import BibliographySection from './components/BibliographySection';
 import TeamSection from './components/TeamSection';
 import InspirationSection from './components/InspirationSection';
 import ShowcaseSection from './components/ShowcaseSection';
-import AnimationSection from './components/AnimationSection'; // Import the new section
-import EditSection from './components/EditSection'; // Import the new section
+import EditSection from './components/EditSection';
 import './App.css';
 import { motion } from 'framer-motion';
 import { FaGlobe } from 'react-icons/fa';

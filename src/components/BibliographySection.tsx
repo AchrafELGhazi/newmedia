@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBook, FaLightbulb, FaQuoteRight } from 'react-icons/fa';
+import { FaBook, FaLightbulb } from 'react-icons/fa';
 
-const annotatedBibliography = [
+// Define types for the annotated bibliography entries
+interface BibliographySource {
+  teamMember: string;
+  documentLink: string;
+  resources: string;
+  summary: string;
+  application: string;
+}
+
+// Annotated bibliography array with types
+const annotatedBibliography: BibliographySource[] = [
   {
     teamMember: 'Achraf EL GHAZI',
     documentLink:
@@ -49,10 +59,12 @@ const annotatedBibliography = [
 
 function BibliographySection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentSource, setCurrentSource] = useState(null);
-  const [expandedIndex, setExpandedIndex] = useState(null);
+  const [currentSource, setCurrentSource] = useState<BibliographySource | null>(
+    null
+  );
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-  const openModal = source => {
+  const openModal = (source: BibliographySource) => {
     setCurrentSource(source);
     setIsModalOpen(true);
   };
@@ -62,7 +74,7 @@ function BibliographySection() {
     setCurrentSource(null);
   };
 
-  const toggleSummary = index => {
+  const toggleSummary = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
@@ -145,65 +157,14 @@ function BibliographySection() {
             </p>
             <motion.button
               onClick={() => openModal(source)}
-              className='mt-4 inline-block px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200 font-bold'
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className='mt-4 text-white bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-800 transition-all duration-300'
+              whileHover={{ scale: 1.1 }}
             >
-              Dive Deeper (If You Dare) →
+              Explore Further
             </motion.button>
           </motion.li>
         ))}
       </motion.ul>
-
-      <AnimatePresence>
-        {isModalOpen && currentSource && (
-          <motion.div
-            className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50'
-            onClick={closeModal}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className='bg-white rounded-2xl p-8 max-w-4xl w-full shadow-2xl relative'
-              onClick={e => e.stopPropagation()}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-            >
-              <button
-                className='absolute top-4 right-4 text-gray-600 hover:text-gray-800 text-2xl'
-                onClick={closeModal}
-              >
-                ✕
-              </button>
-              <h3 className='text-2xl font-bold text-blue-600 mb-4 flex items-center space-x-2'>
-                <FaQuoteRight className='text-yellow-400' />
-                <span>{currentSource.resources}</span>
-              </h3>
-              <p className='text-blue-800 mb-4'>
-                <strong>{currentSource.teamMember}</strong> - Master of Gumball
-                Wisdom
-              </p>
-              <p className='mt-4 text-gray-700'>{currentSource.summary}</p>
-              <p className='mt-4 text-gray-700'>
-                <strong>How we're using this:</strong>{' '}
-                {currentSource.application}
-              </p>
-              <p className='mt-4 text-blue-500'>
-                <a
-                  href={currentSource.documentLink}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='underline font-semibold'
-                >
-                  Read the full document (if you're really, really curious)
-                </a>
-              </p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

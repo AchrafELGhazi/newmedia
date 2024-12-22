@@ -1,8 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
-function HeroSection() {
-  // const characters = ['gumball', 'darwin', 'anais', 'nicole', 'richard'];
+const HeroSection: React.FC = () => {
 
   return (
     <section className='relative text-center py-20 px-4 md:px-20 rounded-xl overflow-hidden bg-gradient-to-br from-sky-600 to-sky-900'>
@@ -31,7 +29,7 @@ function HeroSection() {
         className='relative w-full h-[400px] rounded-xl overflow-hidden shadow-2xl z-10'
       >
         <img
-          src='src/assets/1.jpg'
+          src={'src/assets/1.jpg'}
           alt='Gumball and friends'
           className='w-full h-full object-cover'
         />
@@ -50,29 +48,6 @@ function HeroSection() {
           Welcome to Elmore!
         </motion.h2>
       </motion.div>
-
-      {/* {characters.map((character, index) => (
-        <motion.img
-          key={character}
-          src={`src/assets/${character}.png`}
-          alt={character}
-          className='absolute w-16 h-16 object-contain'
-          style={{
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            zIndex: 5,
-          }}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{
-            delay: 2.5 + index * 0.2,
-            duration: 0.5,
-            type: 'spring',
-            stiffness: 200,
-          }}
-          whileHover={{ scale: 1.2, rotate: 360 }}
-        />
-      ))} */}
 
       <motion.div
         className='absolute inset-0 bg-blue-500 opacity-20'
@@ -103,6 +78,6 @@ function HeroSection() {
       </motion.div>
     </section>
   );
-}
+};
 
 export default HeroSection;
